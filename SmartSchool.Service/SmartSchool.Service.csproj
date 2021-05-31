@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartSchool.Domain\SmartSchool.Domain.csproj" />
+    <ProjectReference Include="..\SmartSchool.Infra.Data\SmartSchool.Infra.Data.csproj" />
+    <ProjectReference Include="..\SmartSchool.Infra.Utilities\SmartSchool.Infra.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
