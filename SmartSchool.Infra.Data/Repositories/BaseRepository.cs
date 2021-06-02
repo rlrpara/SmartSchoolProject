@@ -10,7 +10,7 @@ using System.Text;
 
 namespace SmartSchool.Infra.Data.Repositories
 {
-    public class BaseRepository : IBaseRepository
+    public class BaseRepository : IBaseRepository, IDisposable
     {
         #region Propriedades Privadas
         private IDbTransaction sqlTransaction;

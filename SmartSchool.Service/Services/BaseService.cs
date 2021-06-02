@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SmartSchool.Domain.interfaces.IRepositories;
 using SmartSchool.Domain.interfaces.IServices;
+using System;
 using System.Collections.Generic;
 
 namespace SmartSchool.Service.Services
@@ -109,11 +110,6 @@ namespace SmartSchool.Service.Services
             {
                 return default(dynamic);
             }
-        }
-
-        public void Dispose()
-        {
-            _baseRepository.Dispose();
         }
 
         public int Excluir<T>(int id) where T : class

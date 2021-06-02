@@ -16,6 +16,5 @@ namespace SmartSchool.Domain.interfaces.IServices
         void ExecutarComando(string comandoSql);
         void ExecutarComandoDireto(CommandDefinition command);
         long BuscaMaxItemAsync<T>(string campo, string sqlWhere) where T : class;
-        void Dispose();
     }
 }
