@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using SmartSchool.Domain.interfaces.IRepositories;
 using SmartSchool.Domain.interfaces.IServices;
-using System;
 using System.Collections.Generic;
 
 namespace SmartSchool.Service.Services

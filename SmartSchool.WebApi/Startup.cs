@@ -25,6 +25,7 @@ namespace SmartSchool.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var baseUrl = "http://www.rlrsistemas.com.br";
             services.AddCors();
 
             services.AddControllers();
@@ -37,18 +38,18 @@ namespace SmartSchool.WebApi
                 {
                     Title = "SmartSchool.WebApi",
                     Version = "v1",
-                    TermsOfService = new Uri("http://www.rlrsistemas.com.br"),
+                    TermsOfService = new Uri(baseUrl),
                     Description = "Descrição da webapi do Pague Pouco",
                     License = new OpenApiLicense
                     {
                         Name = "PaguePouco Licence",
-                        Url = new Uri("htto://www.rlrsystemas.com.br")
+                        Url = new Uri(baseUrl)
                     },
                     Contact = new OpenApiContact
                     {
                         Name = "Rodrigo de L. Ribeiro",
                         Email = "rlr.para@gmail.com",
-                        Url = new Uri("htto://www.rlrsystemas.com.br")
+                        Url = new Uri(baseUrl)
                     }
                 });
 
