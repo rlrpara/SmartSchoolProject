@@ -3,8 +3,18 @@ on:
   push:
     branches:
       - master
+    paths: 
+      - '**.Domain.**'
+      - '**.Infra.**'
+      - '**.Service.**'
   pull_request:
+    branches: ["**"]
+    paths: 
+      - '**.Domain.**'
+      - '**.Infra.**'
+      - '**.Service.**'
     types: [opened, synchronize, reopened]
+
 jobs:
   build:
     name: Build
