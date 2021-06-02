@@ -5,7 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmartSchool.Infra.CrossCutting\SmartSchool.Infra.CrossCutting.csproj" />
+    <PackageReference Include="Dapper" Version="2.0.90" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="MySql.Data" Version="8.0.25" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartSchool.Domain\SmartSchool.Domain.csproj" />
+    <ProjectReference Include="..\SmartSchool.Infra.Utilities\SmartSchool.Infra.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

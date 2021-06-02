@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="interfaces\" />
+    <PackageReference Include="Dapper" Version="2.0.90" />
   </ItemGroup>
 
 </Project>

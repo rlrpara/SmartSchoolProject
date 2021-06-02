@@ -381,3 +381,4 @@ FodyWeavers.xsd
 /.sonarqube/conf/cs/SonarLint.xml
 /.sonarqube/conf/vbnet
 /.sonarqube/conf
+*.env
