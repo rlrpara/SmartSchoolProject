@@ -7,10 +7,10 @@ namespace SmartSchool.Domain.Entities
     public class Disciplina
     {
         [Key]
-        [Column("Id")]
+        [Column("CD_ID")]
         public int Codigo { get; set; }
 
-        [Column("Nome")]
-        public string Nome { get; set; }
+        [Column("DS_NOME")]
+        public string NomeCompleto { get; set; }
     }
 }

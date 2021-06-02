@@ -1,4 +1,4 @@
-﻿namespace SmartSchool.Domain.Enumerable
+﻿namespace SmartSchool.Domain.Enums
 {
     public enum ETipoPessoa : int
     {

@@ -20,7 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmartSchool.Domain\SmartSchool.Domain.csproj" />
+    <Folder Include="DomainTests\EntitiesTests\" />
+    <Folder Include="InfraTests\CrossCuttingTests\" />
+    <Folder Include="InfraTests\DataTests\" />
+    <Folder Include="InfraTests\UtilitiesTests\" />
+    <Folder Include="ServiceTests\" />
   </ItemGroup>
 
 </Project>

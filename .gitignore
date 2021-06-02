@@ -361,3 +361,23 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/.sonarqube/conf/0/SonarProjectConfig.xml
+/.sonarqube/conf/0/ProjectOutFolderPath.txt
+/.sonarqube/conf/0/FilesToAnalyze.txt
+/.sonarqube/conf/1/SonarProjectConfig.xml
+/.sonarqube/conf/1/ProjectOutFolderPath.txt
+/.sonarqube/conf/2/SonarProjectConfig.xml
+/.sonarqube/conf/2/ProjectOutFolderPath.txt
+/.sonarqube/conf/3/SonarProjectConfig.xml
+/.sonarqube/conf/3/ProjectOutFolderPath.txt
+/.sonarqube/conf/4/SonarProjectConfig.xml
+/.sonarqube/conf/4/ProjectOutFolderPath.txt
+/.sonarqube/conf/4/FilesToAnalyze.txt
+/.sonarqube/conf/5/SonarProjectConfig.xml
+/.sonarqube/conf/5/ProjectOutFolderPath.txt
+/.sonarqube/conf/6/SonarProjectConfig.xml
+/.sonarqube/conf/6/ProjectOutFolderPath.txt
+/.sonarqube/conf/6/FilesToAnalyze.txt
+/.sonarqube/conf/cs/SonarLint.xml
+/.sonarqube/conf/vbnet
+/.sonarqube/conf
