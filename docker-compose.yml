@@ -1,0 +1,43 @@
+version: '3.4'
+
+volumes:
+  mysqldatabases:
+
+networks:
+  mysqlNET:
+  pagpoucoNET:
+
+services:
+  mysql:
+    image: mysql:5.7.34
+    container_name: smartschoolmysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${PWD}/:/var/lib/mysql/
+    networks:
+      - mysqlNET
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - bind-address=0.0.0.0
+
+  smartschool.webapi:
+    image: ${DOCKER_REGISTRY-}smartschoolwebapi
+    container_name: smartschoolwebapi
+    build:
+      context: .
+      dockerfile: SmartSchool.WebApi/Dockerfile
+    networks:
+      - mysqlNET
+      - pagpoucoNET
+    ports:
+      - "5000:80"
+    depends_on:
+      - mysql
+    environment: 
+      - DBASE=${MYSQL_CONNECTION_STRING}
+      - DBHOST=mysql

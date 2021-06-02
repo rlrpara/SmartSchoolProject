@@ -31,11 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartSchool.Infra.Utilities
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Tests", "5 - Tests", "{3F643FBC-848F-4769-8BCB-B6057A9AE77D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchoolTests", "SmartSchoolTests\SmartSchoolTests.csproj", "{D08FBABA-F41B-4F4F-B5D6-CC30125C1888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartSchoolTests", "SmartSchoolTests\SmartSchoolTests.csproj", "{D08FBABA-F41B-4F4F-B5D6-CC30125C1888}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{E401EC76-43DB-47F3-8258-AB0F943A8739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSchool.Application", "SmartSchool.Application\SmartSchool.Application.csproj", "{14CC1237-2815-41F8-B9E5-5F640DDB1323}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartSchool.Application", "SmartSchool.Application\SmartSchool.Application.csproj", "{14CC1237-2815-41F8-B9E5-5F640DDB1323}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F7799F37-70DD-4BD2-B8B4-2772821DDDB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{14CC1237-2815-41F8-B9E5-5F640DDB1323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14CC1237-2815-41F8-B9E5-5F640DDB1323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14CC1237-2815-41F8-B9E5-5F640DDB1323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7799F37-70DD-4BD2-B8B4-2772821DDDB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7799F37-70DD-4BD2-B8B4-2772821DDDB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7799F37-70DD-4BD2-B8B4-2772821DDDB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7799F37-70DD-4BD2-B8B4-2772821DDDB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

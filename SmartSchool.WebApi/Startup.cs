@@ -1,39 +1,61 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SmartSchool.Domain.interfaces.IRepositories;
+using SmartSchool.Domain.interfaces.IServices;
+using SmartSchool.Infra.Data.Repositories;
+using SmartSchool.Service.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 
 namespace SmartSchool.WebApi
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
 
             services.AddControllers();
+            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddScoped<IBaseRepository, BaseRepository>();
+            services.AddScoped<IBaseService, BaseService>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SmartSchool.WebApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "SmartSchool.WebApi",
+                    Version = "v1",
+                    TermsOfService = new Uri("http://www.rlrsistemas.com.br"),
+                    Description = "Descrição da webapi do Pague Pouco",
+                    License = new OpenApiLicense
+                    {
+                        Name = "PaguePouco Licence",
+                        Url = new Uri("htto://www.rlrsystemas.com.br")
+                    },
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Rodrigo de L. Ribeiro",
+                        Email = "rlr.para@gmail.com",
+                        Url = new Uri("htto://www.rlrsystemas.com.br")
+                    }
+                });
+
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
