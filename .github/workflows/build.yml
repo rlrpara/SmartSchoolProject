@@ -14,7 +14,6 @@ on:
       - '**.Infra.**'
       - '**.Service.**'
     types: [opened, synchronize, reopened]
-
 jobs:
   build:
     name: Build
