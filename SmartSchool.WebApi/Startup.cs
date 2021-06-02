@@ -16,7 +16,7 @@ namespace SmartSchool.WebApi
 {
     public class Startup
     {
-        private readonly string _baseUrl = "http://www.rlrsistemas.com.br";
+        private readonly string _baseUrl = Environment.GetEnvironmentVariable("BASE_URL");
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
