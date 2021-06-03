@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartSchool.Domain.Entities
 {
+    [Table("Usuario")]
     public class Usuario
     {
         [Key]

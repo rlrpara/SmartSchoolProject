@@ -1,20 +1,21 @@
 version: '3.4'
 
 volumes:
-  mysqldatabases:
+  datafiles:
 
 networks:
   mysqlNET:
-  pagpoucoNET:
+  SmartSchoolNET:
 
 services:
-  mysql:
+  database:
     image: mysql:5.7.34
-    container_name: smartschoolmysql
     ports:
       - "3306:3306"
     volumes:
+      - datafiles:/var/lib/mysql/
       - ${PWD}/:/var/lib/mysql/
+    restart: always
     networks:
       - mysqlNET
     environment:
@@ -24,20 +25,22 @@ services:
       - MYSQL_ROOT_HOST=%
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - bind-address=0.0.0.0
+    container_name: smartschoolmysql
 
   smartschool.webapi:
-    image: ${DOCKER_REGISTRY-}smartschoolwebapi
-    container_name: smartschoolwebapi
     build:
       context: .
       dockerfile: SmartSchool.WebApi/Dockerfile
-    networks:
-      - mysqlNET
-      - pagpoucoNET
+    depends_on:
+      - database
     ports:
       - "5000:80"
-    depends_on:
-      - mysql
+    networks:
+      - mysqlNET
+      - SmartSchoolNET
     environment: 
       - DBASE=${MYSQL_CONNECTION_STRING}
-      - DBHOST=mysql
+      - DBHOST=database
+      - BASEURL=${BASE_URL}
+    image: smartschool:dev
+    container_name: smartschoolwebapi

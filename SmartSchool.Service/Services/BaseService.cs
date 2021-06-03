@@ -87,7 +87,7 @@ namespace SmartSchool.Service.Services
             }
         }
 
-        public IEnumerable<T> BuscarTodosPorQuery<T>(string query = null) where T : class
+        public IEnumerable<T> BuscarTodosPorQuery<T>(string query = "") where T : class
         {
             try
             {

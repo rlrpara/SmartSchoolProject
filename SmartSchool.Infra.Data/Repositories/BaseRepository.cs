@@ -145,14 +145,12 @@ namespace SmartSchool.Infra.Data.Repositories
                 OpenConnection();
                 var sqlPesquisa = new StringBuilder();
 
-                if (string.IsNullOrEmpty(query.Trim()))
+                if (string.IsNullOrEmpty(query))
                     sqlPesquisa.AppendLine($"{GeradorDapper.RetornaSelect<T>()}");
                 else
                     sqlPesquisa.AppendLine(query.Trim());
 
-                DefaultTypeMap.MatchNamesWithUnderscores = true;
-
-                return string.IsNullOrEmpty(query.Trim()) ? null : Conexao.Query<T>(sqlPesquisa.ToString(), transaction: sqlTransaction, commandTimeout: 80000000, commandType: CommandType.Text);
+                return Conexao.Query<T>(sqlPesquisa.ToString(), transaction: sqlTransaction, commandTimeout: 80000000, commandType: CommandType.Text);
             }
             catch
             {

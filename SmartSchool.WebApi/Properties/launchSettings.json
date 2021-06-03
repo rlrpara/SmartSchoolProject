@@ -31,6 +31,10 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "DBASE": "Server=172.17.0.3;User Id=root;Password=kvhqj;Database=smartschooldb;",
+        "BASEURL": "http://www.rlrsistemas.com.br"
+      },
       "publishAllPorts": true
     }
   }
