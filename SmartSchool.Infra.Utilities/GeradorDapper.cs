@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using SmartSchool.Domain.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -52,27 +53,43 @@ namespace SmartSchool.Infra.Utilities
 
             return (tableattr != null ? tableattr.Name : "");
         }
-        public static DynamicParameters ObterParametros<T>(T entidade) where T : class
+        public static DynamicParameters ObterParametros<T>(T entidade) 
         {
             var dbArgs = new DynamicParameters();
             foreach (var field in entidade.GetType().GetProperties())
             {
-                var campo = field.GetCustomAttribute<ColumnAttribute>()?.Name ?? "";
-                var valor = field.GetValue(entidade)?.ToString() ?? "";
+                var obterCampo = field.GetCustomAttribute<ColumnAttribute>()?.Name ?? "";
+                var obterValor = field.GetValue(entidade);
+                //var valor = field.GetValue(entidade)?.ToString() ?? "";
 
-                if (!EhBrancoNulo(campo) && !valor.Contains("01/01/0001 12:00:00 AM") && !valor.Equals("0"))
+                if (!EhBrancoNulo(obterCampo) && !obterValor.ToString().Contains("01/01/0001 12:00:00 AM") && !obterValor.ToString().Equals("0"))
                 {
-                    if (field.GetValue(entidade) is DateTime)
-                        dbArgs.Add($"@{field.Name}", Convert.ToDateTime(valor).ToString("yyyy-MM-dd HH:mm:ss"));
-                    else if (field.GetValue(entidade) is Boolean)
-                        dbArgs.Add($"@{field.Name}", valor.Equals("0"));
+                    if (obterValor is DateTime)
+                        dbArgs.Add($"@{field.Name}", EhBrancoNulo(obterValor?.ToString() ?? "") ? null : Convert.ToDateTime(obterValor.ToString()).ToString("yyyy-MM-dd HH:mm:ss"));
+
+                    if (obterValor is Enum)
+                    {
+                        dbArgs.Add($"@{field.Name}", EhBrancoNulo(obterValor?.ToString() ?? "") ? null : field.GetValue(entidade).ToEnum());
+                    }
+
+                    else if (obterValor is bool)
+                        dbArgs.Add($"@{field.Name}", EhBrancoNulo(obterValor?.ToString() ?? "") ? null : Convert.ToBoolean(obterValor?.ToString()));
+
                     else if (field.GetCustomAttribute<KeyAttribute>() == null)
-                        dbArgs.Add($"@{field.Name}", (EhBrancoNulo(valor) ? null : valor));
+                        dbArgs.Add($"@{field.Name}", EhBrancoNulo(obterValor?.ToString() ?? "") ? null : obterValor?.ToString());
                 }
             }
 
             return dbArgs;
         }
+
+        private static int ToEnum(this object info)
+        {
+            var t = info.GetType();
+
+            return int.Parse(t.ToString());
+        }
+
         private static string ObterValoresInsert<T>() where T : class
         {
             var retorno = new StringBuilder();

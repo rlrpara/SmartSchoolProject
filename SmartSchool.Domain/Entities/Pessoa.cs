@@ -13,7 +13,7 @@ namespace SmartSchool.Domain.Entities
         public int Codigo { get; set; }
 
         [Column("CD_TIPO_PESSOA")]
-        public ETipoPessoa TipoPessoa { get; set; }
+        public int TipoPessoa { get; set; }
 
         [Column("DS_NOME")]
         public string Nome { get; set; }
