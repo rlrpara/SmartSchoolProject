@@ -34,16 +34,16 @@ namespace SmartSchool.Infra.Utilities
         private static string ObterCampoSelect<T>() where T : class
         {
             var retorno = new StringBuilder();
-            var tipo = typeof(T);
-            foreach (var field in tipo.GetProperties())
+
+            foreach (var field in typeof(T).GetProperties())
             {
                 var campo = field.GetCustomAttribute<ColumnAttribute>()?.Name ?? "";
-                var chave = field?.Name ?? "";
+                var alias = field?.Name ?? "";
 
                 if (EhBrancoNulo(retorno.ToString().Trim()) && !EhBrancoNulo(campo))
-                    retorno.AppendLine($"{campo} as {chave} ");
+                    retorno.AppendLine($"{campo} as {alias} ");
                 else if (!EhBrancoNulo(campo.Trim()))
-                    retorno.AppendLine($"{(campo.Length == 0 ? campo : new string(' ', 5)) + ", " + campo} as {chave} ");
+                    retorno.AppendLine($"{(campo.Length == 0 ? campo : new string(' ', 5)) + ", " + campo} as {alias} ");
             }
             return retorno.ToString().Trim();
         }
@@ -60,17 +60,11 @@ namespace SmartSchool.Infra.Utilities
             {
                 var obterCampo = field.GetCustomAttribute<ColumnAttribute>()?.Name ?? "";
                 var obterValor = field.GetValue(entidade);
-                //var valor = field.GetValue(entidade)?.ToString() ?? "";
 
                 if (!EhBrancoNulo(obterCampo) && !obterValor.ToString().Contains("01/01/0001 12:00:00 AM") && !obterValor.ToString().Equals("0"))
                 {
                     if (obterValor is DateTime)
                         dbArgs.Add($"@{field.Name}", EhBrancoNulo(obterValor?.ToString() ?? "") ? null : Convert.ToDateTime(obterValor.ToString()).ToString("yyyy-MM-dd HH:mm:ss"));
-
-                    if (obterValor is Enum)
-                    {
-                        dbArgs.Add($"@{field.Name}", EhBrancoNulo(obterValor?.ToString() ?? "") ? null : field.GetValue(entidade).ToEnum());
-                    }
 
                     else if (obterValor is bool)
                         dbArgs.Add($"@{field.Name}", EhBrancoNulo(obterValor?.ToString() ?? "") ? null : Convert.ToBoolean(obterValor?.ToString()));
@@ -81,13 +75,6 @@ namespace SmartSchool.Infra.Utilities
             }
 
             return dbArgs;
-        }
-
-        private static int ToEnum(this object info)
-        {
-            var t = info.GetType();
-
-            return int.Parse(t.ToString());
         }
 
         private static string ObterValoresInsert<T>() where T : class

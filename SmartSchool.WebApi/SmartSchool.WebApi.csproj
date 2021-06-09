@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>SmartSchool.WebApi.xml</DocumentationFile>
+    <DocumentationFile>E:\Repositorio\SmartSchoolProject\SmartSchool.WebApi\SmartSchool.WebApi.xml</DocumentationFile>
     <NoWarn>1701;170;1591</NoWarn>
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath></OutputPath>
+    <DocumentationFile>E:\Repositorio\SmartSchoolProject\SmartSchool.WebApi\SmartSchool.WebApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
